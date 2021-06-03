@@ -2,7 +2,9 @@ package by.nikita.springcore.model.service.impl;
 
 import by.nikita.springcore.model.entity.GiftCertificate;
 import by.nikita.springcore.model.service.GiftCertificateService;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     @Override

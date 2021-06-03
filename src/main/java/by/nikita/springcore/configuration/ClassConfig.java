@@ -2,9 +2,11 @@ package by.nikita.springcore.configuration;
 
 import by.nikita.springcore.model.entity.TestBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@ComponentScan("by.nikita.springcore")
 public class ClassConfig {
     @Bean
     public TestBean bean(){
@@ -12,6 +14,17 @@ public class ClassConfig {
     }
 
     /*
+
+    @Component - создание бина из класса
+    @Autowiring - автоматическое внедрение зависимостей
+    @Qualifier - уточнение внедряемой зависимости для @Autowiring
+
+
+    Для бинов использовать scope = prototipe потому что бины будут создаваться отдельно
+    для него не вызывается метод destroy от Spring, надо ручками, если оно надо
+    Изначально scope = singleton!!!
+
+
         не работает эта херовина
 
         <aop:config>

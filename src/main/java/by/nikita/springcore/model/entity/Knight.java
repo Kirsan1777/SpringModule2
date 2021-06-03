@@ -1,32 +1,35 @@
 package by.nikita.springcore.model.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Knight {
 
-    private String phraseYes;
+    private String phrase;
 
     public Knight(){
     }
 
     public Knight(String phrase){
-        this.phraseYes = phrase;
+        this.phrase = phrase;
     }
 
-    public String getPhraseYes() {
-        return phraseYes;
+    public String getPhrase() {
+        return phrase;
     }
 
-    public void setPhraseYes(String phraseYes) {
-        this.phraseYes = phraseYes;
+    public void setPhrase(String phrase) {
+        this.phrase = phrase;
     }
 
     public void acceptQuest(){
-        System.out.println(phraseYes);
+        System.out.println(phrase);
     }
 
     @Override
     public String toString() {
         return "Knight{" +
-                "phrase='" + phraseYes + '\'' +
+                "phrase='" + phrase + '\'' +
                 '}';
     }
 }

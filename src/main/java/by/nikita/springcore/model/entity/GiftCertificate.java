@@ -1,7 +1,10 @@
 package by.nikita.springcore.model.entity;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Objects;
 
+@Component
 public class GiftCertificate {
     private int id;
     private String description;

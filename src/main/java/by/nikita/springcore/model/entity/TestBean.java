@@ -1,5 +1,8 @@
 package by.nikita.springcore.model.entity;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TestBean {
     private String name;
 
