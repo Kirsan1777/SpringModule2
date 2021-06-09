@@ -1,14 +1,26 @@
 package com.epam.esm.configuration;
 
+import com.epam.esm.model.entity.GiftCertificate;
+import com.epam.esm.model.entity.Tag;
+import com.epam.esm.model.service.impl.TagServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
-@ComponentScan("com.epam.esm")
-public class ClassConfig {
-    /*
 
+public class ClassConfig {
+
+    @Bean
+    public GiftCertificate bean(){
+        return new GiftCertificate();
+    }
+
+    @Bean
+    public Tag knightWithParam(){
+        return new Tag();
+    }
+
+    /*
     @Component - создание бина из класса
     @Autowiring - автоматическое внедрение зависимостей
     @Qualifier - уточнение внедряемой зависимости для @Autowiring

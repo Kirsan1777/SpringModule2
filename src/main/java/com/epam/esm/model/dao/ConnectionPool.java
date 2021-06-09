@@ -1,8 +1,7 @@
 package com.epam.esm.model.dao;
 
 import com.epam.esm.exception.ConnectionDataBaseException;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,10 +11,9 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
-
+@Component
 /*Переделать под спринг через аннотаци*/
 public class ConnectionPool {
-    private static final Logger LOGGER = Logger.getLogger(ConnectionPool.class);
 
     private static final String RESOURCE_BUNDLE = "property.database";
     private static final String USERNAME = "username";
@@ -65,7 +63,7 @@ public class ConnectionPool {
         if (connection instanceof ProxyConnection && busyConnections.remove(connection)) {
             freeConnections.offer((ProxyConnection) connection);
         } else {
-            LOGGER.log(Level.WARN, "Invalid connection to release");
+
         }
     }
 
@@ -76,7 +74,7 @@ public class ConnectionPool {
             }
             //deregisterDriver();
         } catch (SQLException | InterruptedException e) {
-            LOGGER.log(Level.ERROR, "Can't destroy pool");
+
         }
     }
 
