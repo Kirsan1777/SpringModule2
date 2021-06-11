@@ -22,10 +22,10 @@ import javax.sql.DataSource;
 @ComponentScan("com.epam.esm")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
-    //Конфигурация 1 в 1 как в файле applicationContextMVC.xml так что xml больше не нужен
+    //It means applicationContext = applicationContextMVC.xml
     private final ApplicationContext applicationContext;
 
-    @Autowired // Внедряется самим спрингом за меня, вообще не трогай, да-да оно само работает
+    @Autowired // implement by Spring auto
     public SpringConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -34,9 +34,8 @@ public class SpringConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views/"); // папка наших представлений
-        templateResolver.setSuffix(".jsp"); // расширение наших представлений
-        //templateResolver.setSuffix(".jsp"); // расширение наших представлений
+        templateResolver.setPrefix("/WEB-INF/views/"); // folder of our views
+        templateResolver.setSuffix(".jsp"); // expansion
         return templateResolver;
     }
 

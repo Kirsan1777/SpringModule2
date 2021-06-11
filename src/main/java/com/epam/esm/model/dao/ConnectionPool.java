@@ -11,8 +11,8 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
+
 @Component
-/*Переделать под спринг через аннотаци*/
 public class ConnectionPool {
 
     private static final String RESOURCE_BUNDLE = "property.database";

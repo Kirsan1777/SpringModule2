@@ -1301,12 +1301,13 @@ SELECT|sys.sys_config
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
     </column>
     <column id="380" parent="300" name="id_tag">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="381" parent="300" name="id_certificates">
+    <column id="381" parent="300" name="id_certificate">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </column>
@@ -1315,7 +1316,7 @@ SELECT|sys.sys_config
       <Type>btree</Type>
     </index>
     <index id="383" parent="300" name="many_to_many_gift_certificate_id_fk">
-      <ColNames>id_certificates</ColNames>
+      <ColNames>id_certificate</ColNames>
       <Type>btree</Type>
     </index>
     <key id="384" parent="300" name="PRIMARY">
@@ -1329,7 +1330,7 @@ SELECT|sys.sys_config
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="386" parent="300" name="many_to_many_gift_certificate_id_fk">
-      <ColNames>id_certificates</ColNames>
+      <ColNames>id_certificate</ColNames>
       <RefTableName>gift_certificate</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>

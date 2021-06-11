@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import java.util.EnumSet;
 
 public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
-    // Замена Web.xml с помощью java кода
+    // Our Web.xml using java code
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[0];
@@ -19,12 +19,12 @@ public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {SpringConfig.class}; // это наша конфигурация из
+        return new Class[] {SpringConfig.class}; // our config class
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] {"/"}; // все http запросы пересылаем на диспатчер сервлет
+        return new String[] {"/"}; // all http request
     }
 
     @Override

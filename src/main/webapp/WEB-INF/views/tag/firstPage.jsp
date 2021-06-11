@@ -7,7 +7,7 @@
 <body>
 
 <div th:each="tag : ${tags}">
-    <a th:href="@{/tags/{id}(id=${tag.getId()})}"
+    <a th:href="@{/tag/{id}(id=${tag.getId()})}"
        th:text="${tag.getName()}">user</a>
 </div>
 

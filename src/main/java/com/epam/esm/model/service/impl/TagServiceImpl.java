@@ -10,23 +10,24 @@ import java.util.List;
 
 @Component
 public class TagServiceImpl implements TagService {
-    private final TagDAOImpl tagDAO;
+    private TagDAOImpl tagDAO;
     @Autowired
     public TagServiceImpl(TagDAOImpl tagDAO) {
         this.tagDAO = tagDAO;
     }
+    public TagServiceImpl(){
+
+    }
 
 
-    public List<Tag> allTags(){
-        return tagDAO.allTags();
+
+
+    public List<Tag> allTags(String sort){
+        return tagDAO.allTags(sort);
     }
 
     public void deleteTag(int idTag){
         tagDAO.deleteTag(idTag);
-    }
-
-    public void updateTag(Tag tag){
-        tagDAO.updateTag(tag.getName(), tag.getId());
     }
 
     public void addTag(String name){
@@ -34,7 +35,11 @@ public class TagServiceImpl implements TagService {
     }
 
     public Tag findByName(String name){
-        return tagDAO.readOneTag(name);
+        return tagDAO.readOneTagByName(name);
+    }
+
+    public Tag findById(int id){
+        return tagDAO.readOneTagById(id);
     }
 
 }

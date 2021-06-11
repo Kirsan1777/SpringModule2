@@ -10,12 +10,13 @@ import static org.mockito.Mockito.mock;
 
 @Configuration
 public class ConfigTest {
+
     @Bean
     public TagServiceImpl tagServiceImpl(){
         return mock(TagServiceImpl.class);
     }
 
-   /*@Bean
+   @Bean
     public TagDAOImpl tagDAO(){
         return new TagDAOImpl(template());
     }
@@ -23,5 +24,5 @@ public class ConfigTest {
     @Bean
     public JdbcTemplate template(){
         return mock(JdbcTemplate.class);
-    }*/
+    }
 }

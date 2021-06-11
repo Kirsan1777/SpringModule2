@@ -12,6 +12,7 @@ import java.util.List;
 public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     private final GiftCertificateDAOImpl giftCertificateDAO;
+
     @Autowired
     public GiftCertificateServiceImpl(GiftCertificateDAOImpl giftCertificateDAO) {
         this.giftCertificateDAO = giftCertificateDAO;
@@ -25,11 +26,15 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         giftCertificateDAO.deleteCertificate(id);
     }
 
-    public List<GiftCertificate> allGiftCertificate(){
-        return giftCertificateDAO.allCertificate();
+    public List<GiftCertificate> allGiftCertificate(String sort){
+        return giftCertificateDAO.allCertificate(sort);
     }
 
     public void updateGiftCertificate(GiftCertificate giftCertificate){
         giftCertificateDAO.updateCertificate(giftCertificate);
+    }
+
+    public GiftCertificate findGiftById(int id){
+        return giftCertificateDAO.readOneGiftById(id);
     }
 }

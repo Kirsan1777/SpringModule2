@@ -1,11 +1,8 @@
 package com.epam.esm.model.dao.impl;
 
 import com.epam.esm.model.dao.GiftCertificateDAO;
-import com.epam.esm.model.dao.TagMapper;
 import com.epam.esm.model.dao.query.SqlGiftCertificateQuery;
-import com.epam.esm.model.dao.query.SqlTagQuery;
 import com.epam.esm.model.entity.GiftCertificate;
-import com.epam.esm.model.entity.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -22,8 +19,13 @@ public class GiftCertificateDAOImpl implements GiftCertificateDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<GiftCertificate> allCertificate(){
-        return jdbcTemplate.query(SqlGiftCertificateQuery.SELECT_ALL_CERTIFICATE, new BeanPropertyRowMapper<>(GiftCertificate.class));
+    public List<GiftCertificate> allCertificate(String sort){
+        return jdbcTemplate.query(SqlGiftCertificateQuery.SELECT_ALL_CERTIFICATE + sort, new BeanPropertyRowMapper<>(GiftCertificate.class));
+    }
+
+    public GiftCertificate readOneGiftById(int id){
+        return jdbcTemplate.query(SqlGiftCertificateQuery.SELECT_CERTIFICATE_BY_ID, new Object[]{id},
+                new BeanPropertyRowMapper<>(GiftCertificate.class)).stream().findAny().orElse(null);
     }
 
     public void addCertificate(GiftCertificate certificate) {
@@ -32,7 +34,7 @@ public class GiftCertificateDAOImpl implements GiftCertificateDAO {
     }
 
     public void deleteCertificate(int idCertificate) {
-        jdbcTemplate.query(SqlGiftCertificateQuery.DELETE_CERTIFICATE, new Object[]{idCertificate}, new BeanPropertyRowMapper<>(GiftCertificate.class));
+        jdbcTemplate.update(SqlGiftCertificateQuery.DELETE_CERTIFICATE, idCertificate);
     }
 
     public void updateCertificate(GiftCertificate giftCertificate){

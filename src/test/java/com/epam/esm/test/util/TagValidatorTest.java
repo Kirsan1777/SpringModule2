@@ -20,6 +20,13 @@ public class TagValidatorTest {
     @Autowired
     private TagServiceImpl tagServiceImpl;
 
+    public TagValidatorTest(){
+    }
+
+    public TagValidatorTest(TagServiceImpl tagServiceImpl) {
+        this.tagServiceImpl = tagServiceImpl;
+    }
+
     @Test
     public void checkValidateName(){
         when(tagServiceImpl.findByName(NAME)).thenReturn(null);
