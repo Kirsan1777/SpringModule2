@@ -11,6 +11,8 @@
     <title>Error page</title>
 </head>
 <body>
-
+<h1>Error!</h1>
+<p>Error message is <p th:text="${exception.getMessage()}">"</p>
+<button class="btn btn-primary" onclick="history.back()">Back to previous page</button>
 </body>
 </html>

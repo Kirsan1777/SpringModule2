@@ -16,6 +16,8 @@ import static org.mockito.Mockito.when;
 
 public class TagServiceTest {
     private static TagServiceImpl tagService;
+    private static Tag tag = new Tag("Test");
+    private static Tag tagFalse = new Tag("TestFalse");
 
     @BeforeAll
     public static void setup(){
@@ -24,12 +26,13 @@ public class TagServiceTest {
         when(tagDAO.addTag(newTag.getName())).thenReturn(1);
         when(tagDAO.allTags("")).thenReturn(new ArrayList<Tag>(Arrays.asList(newTag)));
         when(tagDAO.deleteTag(1)).thenReturn(1);
+        when(tagDAO.readOneTagById(1)).thenReturn(tag);
+        when(tagDAO.readOneTagByName("Test")).thenReturn(tag);
         tagService = new TagServiceImpl(tagDAO);
     }
 
-
     @Test
-    public void insertTagTestTrue() {
+    public void addTagTestTrue() {
         assertEquals(tagService.addTag("newTag"),1);
     }
 
@@ -45,7 +48,7 @@ public class TagServiceTest {
     }
 
     @Test
-    public void insertTagTestFalse() {
+    public void addTagTestFalse() {
         assertNotEquals(tagService.addTag("newTag"),0);
     }
 
@@ -58,5 +61,25 @@ public class TagServiceTest {
     @Test
     public void deleteTagTestFalse(){
         assertNotEquals(tagService.deleteTag(1),0);
+    }
+
+    @Test
+    public void getOneByIdTagTestTrue(){
+        assertEquals(tagService.findById(1), tag);
+    }
+
+    @Test
+    public void getOneByIdTestFalse(){
+        assertNotEquals(tagService.findById(1), tagFalse);
+    }
+
+    @Test
+    public void getOneByNameTagTestTrue(){
+        assertEquals(tagService.findByName("Test"), tag);
+    }
+
+    @Test
+    public void getOneByNameTestFalse(){
+        assertNotEquals(tagService.findByName("Test"), tagFalse);
     }
 }

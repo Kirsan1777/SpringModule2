@@ -10,6 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 
 //@ControllerAdvice
+@EnableWebMvc
 public class ErrorHandler {
 
     @ExceptionHandler(NoHandlerFoundException.class)

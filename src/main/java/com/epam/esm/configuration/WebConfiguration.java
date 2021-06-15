@@ -10,6 +10,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.util.EnumSet;
 
+/**
+ * Class of initializer of web app
+ */
 public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
     // Our Web.xml using java code
     @Override

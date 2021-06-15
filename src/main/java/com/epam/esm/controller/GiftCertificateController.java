@@ -4,6 +4,7 @@ package com.epam.esm.controller;
 import com.epam.esm.model.dao.Transaction;
 import com.epam.esm.model.entity.GiftCertificate;
 import com.epam.esm.model.service.impl.GiftCertificateServiceImpl;
+import com.epam.esm.model.service.impl.GiftTagServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class GiftCertificateController {
     @Autowired
     private Transaction transaction;
 
+    @Autowired
+    private GiftTagServiceImpl giftTagService;
+
     private final GiftCertificateServiceImpl giftCertificate;
 
     @Autowired
@@ -34,7 +38,6 @@ public class GiftCertificateController {
     public ModelAndView secondPage(ModelAndView model){
         model.addObject("gifts", giftCertificate.allGiftCertificate(ASC));
         model.addObject("gift", new GiftCertificate());
-        //transaction.addTagToGiftCertificate("qwer", 1);
         model.setViewName(CERTIFICATE_PAGE);
         return model;
     }
@@ -66,7 +69,7 @@ public class GiftCertificateController {
         System.out.println(newTag);
         System.out.println(idTag);
         System.out.println(gift);
-        transaction.addTagToGiftCertificate(newTag, idTag);
+        giftTagService.addTagToGiftCertificate(newTag, idTag);
         model.setViewName(CERTIFICATE_REDIRECT_PAGE);
         return model;
 

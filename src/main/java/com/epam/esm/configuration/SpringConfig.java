@@ -17,7 +17,9 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 import javax.sql.DataSource;
 
-
+/**
+ * Configuration class of Spring
+ */
 @Configuration
 @ComponentScan(basePackages = "com.epam.esm")
 @EnableWebMvc

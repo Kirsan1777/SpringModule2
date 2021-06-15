@@ -1,6 +1,7 @@
 package com.epam.esm.model.dao.impl;
 
 import com.epam.esm.model.dao.GiftTagMapper;
+import com.epam.esm.model.dao.LinkTableDAO;
 import com.epam.esm.model.dao.query.SqlGiftCertificateQuery;
 import com.epam.esm.model.dao.query.SqlManyToManyQuery;
 import com.epam.esm.model.dao.query.SqlTagQuery;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class LinkTableDAOImpl {
+public class LinkTableDAOImpl implements LinkTableDAO {
 
     private final JdbcTemplate jdbcTemplate;
     @Autowired

@@ -13,6 +13,8 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 import javax.sql.DataSource;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 
 public class GiftCertificateDAOTest {
@@ -20,6 +22,14 @@ public class GiftCertificateDAOTest {
     private GiftCertificateDAOImpl giftCertificateDAO;
 
     private static final String SELECT = "SELECT * FROM gift_certificate";
+    GiftCertificate giftCertificateUpdated = new GiftCertificate(10,"newTagUpdate",200,1,
+            LocalDateTime.of(2017, Month.NOVEMBER, 30, 0,0),
+            LocalDateTime.of(2017, Month.NOVEMBER, 30, 0,0),
+            "newGift");
+    GiftCertificate giftCertificate = new GiftCertificate(1,"desc1",1,1,
+            LocalDateTime.of(2021, Month.JUNE, 2, 0,0),
+            LocalDateTime.of(2021, Month.JUNE, 2, 0,0),
+            "cer1");
 
     @BeforeEach
     public void setUp() {
@@ -50,25 +60,33 @@ public class GiftCertificateDAOTest {
 
     @Test
     public void addGiftCertificateValidTest() {
-        GiftCertificate checkResult = new GiftCertificate();
-        checkResult.setId(1);
-        checkResult.setName("tag1");
-        List<GiftCertificate> certificates = giftCertificateDAO.allCertificate("");
-
-
-        //certificates.stream().forEach(System.out::println);
-
-
-        /*GiftCertificate created = giftCertificateDAO.readOneGiftById(1);;
-        Assert.assertEquals(checkResult, created);*/
+        int result = giftCertificateDAO.addCertificate(giftCertificateUpdated);
+        Assert.assertEquals(1, result);
     }
 
-    /*@Test
-    public void addGiftCertificateInvalidTest(){
-        GiftCertificate checkResult = new GiftCertificate();
-        checkResult.setId(2);
-        checkResult.setName("tag2");
-        GiftCertificate created = giftCertificateDAO.readOneGiftById(1);;
-        Assert.assertNotEquals(checkResult, created);
-    }*/
+    @Test
+    public void getAllGiftCertificateValidTest() {
+        int resultSize = giftCertificateDAO.allCertificate("").size();
+        Assert.assertEquals(5, resultSize);
+    }
+
+    @Test
+    public void deleteGiftCertificateValidTest(){
+        int result = giftCertificateDAO.deleteCertificate(1);;
+        Assert.assertEquals(result, 1);
+    }
+
+    @Test
+    public void updateGiftCertificateValidTest(){
+        int result = giftCertificateDAO.updateCertificate(giftCertificate);
+        Assert.assertEquals(result, 1);
+    }
+
+    @Test
+    public void readOneGiftCertificateValidTest(){
+        GiftCertificate result = giftCertificateDAO.readOneGiftById(1);
+        Assert.assertEquals(result, giftCertificate);
+    }
+
+
 }
