@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 
 
 @Configuration
-@ComponentScan("com.epam.esm")
+@ComponentScan(basePackages = "com.epam.esm")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
     //It means applicationContext = applicationContextMVC.xml

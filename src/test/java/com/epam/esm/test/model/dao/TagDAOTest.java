@@ -6,21 +6,16 @@ import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.sql.DataSource;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 //@ExtendWith(SpringExtension.class)
 public class TagDAOTest {
     private TagDAOImpl tagDAO;
-
 
     @BeforeEach
     public void setUp() {
@@ -57,4 +52,16 @@ public class TagDAOTest {
         Tag created = tagDAO.readOneTagById(1);;
         Assert.assertEquals(checkResult, created);
     }
+
+    @Test
+    public void addGiftCertificateInvalidTest(){
+        Tag checkResult = new Tag();
+        checkResult.setId(2);
+        checkResult.setName("tag2");
+        Tag created = tagDAO.readOneTagById(1);;
+        Assert.assertNotEquals(checkResult, created);
+    }
+
+
+
 }

@@ -177,11 +177,28 @@
       <version>2.4.0</version>
       <scope>test</scope>
     </dependency>
-
-
-
-
   </dependencies>
+
+  <profiles>
+    <profile>
+      <id>dev</id>
+      <build>
+        <finalName>${project.artifactId}-dev</finalName>
+        <filters>
+          <filter>src/main/resources/dev.properties</filter>
+        </filters>
+      </build>
+    </profile>
+    <profile>
+      <id>prod</id>
+      <build>
+        <finalName>${project.artifactId}-prod</finalName>
+        <filters>
+          <filter>src/main/resources/prod.properties</filter>
+        </filters>
+      </build>
+    </profile>
+  </profiles>
 
   <build>
     <finalName>SpringTask1</finalName>

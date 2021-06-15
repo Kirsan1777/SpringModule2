@@ -26,12 +26,12 @@ public class TagServiceImpl implements TagService {
         return tagDAO.allTags(sort);
     }
 
-    public void deleteTag(int idTag){
-        tagDAO.deleteTag(idTag);
+    public int deleteTag(int idTag){
+        return tagDAO.deleteTag(idTag);
     }
 
-    public void addTag(String name){
-        tagDAO.addTag(name);
+    public int addTag(String name){
+        return tagDAO.addTag(name);
     }
 
     public Tag findByName(String name){

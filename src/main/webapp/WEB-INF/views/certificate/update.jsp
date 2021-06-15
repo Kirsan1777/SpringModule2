@@ -1,13 +1,31 @@
-<!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <head>
     <meta charset="UTF-8">
     <title>Update</title>
 </head>
 <body>
-<p th:text="${gift.getName()}">VALUE</p>
-<p th:text="${gift.getId()}">VALUE</p>
-<p th:text="${gift.getDescription()}">VALUE</p>
+
+<div align="center">
+    <h1>Gift</h1>
+    <table border="1">
+        <th>Gift Name</th>
+        <th>Create Date</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Last Update Date</th>
+            <tr>
+                <td ><p th:text="${gift.getName()}"></p></td>
+                <td ><p th:text="${gift.getCreateDate()}"></td>
+                <td ><p th:text="${gift.getDuration()}"></td>
+                <td ><p th:text="${gift.getDescription()}"></td>
+                <td ><p th:text="${gift.getPrice()}"></td>
+                <td ><p th:text="${gift.getLastUpdateDate()}"></td>
+
+            </tr>
+    </table>
+</div>
 
 <form th:method="DELETE" th:action="@{/certificate/{id}(id=${gift.getId()})}">
     <input type="submit" value="Delete"/>
@@ -21,6 +39,12 @@
     <input type="text" th:field="*{description}" id="description"/>
     <br/>
     <input type="submit" value="Update!"/>
+</form>
+
+<form method="POST" action="addTagToGift">
+    <td><input type="hidden" name="idTag" th:value="${gift.getId()}"/></td>
+    <td><input type="text" name="newTag"/></td>
+    <input type="submit" value="Submit" />
 </form>
 
 </body>

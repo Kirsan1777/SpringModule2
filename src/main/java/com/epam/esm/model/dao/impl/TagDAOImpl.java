@@ -24,12 +24,12 @@ public class TagDAOImpl implements TagDAO {
         return jdbcTemplate.query(SqlTagQuery.SELECT_ALL_TAG + sort, new BeanPropertyRowMapper<>(Tag.class));
     }
 
-    public void addTag(String name) {
-        jdbcTemplate.update(SqlTagQuery.ADD_TAG, name);
+    public int addTag(String name) {
+        return jdbcTemplate.update(SqlTagQuery.ADD_TAG, name);
     }
 
-    public void deleteTag(int idTag) {
-        jdbcTemplate.update(SqlTagQuery.DELETE_TAG, idTag);
+    public int deleteTag(int idTag) {
+        return jdbcTemplate.update(SqlTagQuery.DELETE_TAG, idTag);
     }
 
     public Tag readOneTagByName(String name){

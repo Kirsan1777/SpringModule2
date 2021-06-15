@@ -26,9 +26,8 @@ public class LinkTableDAOImpl {
             jdbcTemplate.update(SqlManyToManyQuery.ADD_A_GIFT_TAG, idTag, idGift);
     }
 
-    public List<GiftTag> getConcatenatedTables(){
+    public List<GiftTag> getConcatenatedTables(String sortBy){
         return jdbcTemplate.query("SELECT t.name, c.name, c.price, c.duration, c.description, c.create_date, c.last_update_date" +
-                " FROM many_to_many gct JOIN tag t ON gct.id_tag = t.id JOIN gift_certificate c ON gct.id_certificate = c.id;", new GiftTagMapper());
-
+                " FROM many_to_many gct JOIN tag t ON gct.id_tag = t.id JOIN gift_certificate c ON gct.id_certificate = c.id" + sortBy, new GiftTagMapper());
     }
 }

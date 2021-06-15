@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Comparator;
-import java.util.Set;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/tag")
 public class ControllerSpring {
-    private static final String DESK = " ORDER BY name DESC";
     private static final String ASC = " ORDER BY name ASC";
+    private static final String TAG_PAGE = "tag/firstPage";
+    private static final String TAG_UPDATE_PAGE = "tag/change";
+    private static final String TAG_REDIRECT_PAGE = "redirect:/tag/firstPage";
     private final TagServiceImpl tagService;
 
     @Autowired
@@ -22,42 +22,55 @@ public class ControllerSpring {
         this.tagService = tagService;
     }
 
+
     @GetMapping("/firstPage")
+    public ModelAndView firstPage(ModelAndView model, @RequestParam(value = "sort", required = false) String sort) {
+        model.addObject("tags", tagService.allTags(ASC));
+        model.addObject("tag", new Tag());
+        model.setViewName(TAG_PAGE);
+        return model;
+    }
+
+    @GetMapping("/sort")
+    public ModelAndView sort(ModelAndView model, @RequestParam("sort") String sort){
+        model.addObject("tag", new Tag());
+        model.setViewName(TAG_PAGE);
+        return model;
+    }
+
+    @GetMapping("/{id}")
+    public ModelAndView show(@PathVariable("id") int id, ModelAndView model) {
+        model.addObject("tag", tagService.findById(id));
+        model.setViewName(TAG_UPDATE_PAGE);
+        return model;
+    }
+
+    @GetMapping("/change")
+    public ModelAndView seeTag(ModelAndView model){
+        model.addObject("tag", new Tag());
+        model.setViewName(TAG_UPDATE_PAGE);
+        return model;
+    }
+
+    @PostMapping
+    public ModelAndView createTag(@ModelAttribute("tag") Tag tag, ModelAndView model){
+        tagService.addTag(tag.getName());
+        model.setViewName(TAG_REDIRECT_PAGE);
+        return model;
+    }
+
+    @DeleteMapping("/{id}")
+    public ModelAndView delete(@PathVariable("id") int id, ModelAndView model) {
+        tagService.deleteTag(id);
+        model.setViewName(TAG_REDIRECT_PAGE);
+        return model;
+    }
+
+}
+
+    /*@GetMapping("/firstPage")
     public String firstPage(Model model, @RequestParam(value = "sort", required = false) String sort){
         model.addAttribute("tags", tagService.allTags(ASC));
         model.addAttribute("tag", new Tag());
         return "tag/firstPage";
-    }
-
-    @GetMapping("/sort")
-    public String sort(Model model, @RequestParam("sort") String sort){
-
-        model.addAttribute("tag", new Tag());
-        return "tag/firstPage";
-    }
-
-    @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("tag", tagService.findById(id));
-        return "tag/change";
-    }
-
-    @GetMapping("/change")
-    public String seeTag(Model model){
-        model.addAttribute("tag", new Tag());
-        return "tag/change";
-    }
-
-    @PostMapping
-    public String createTag(@ModelAttribute("tag") Tag tag){
-        tagService.addTag(tag.getName());
-        return "redirect:/tag/firstPage";
-    }
-
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable("id") int id) {
-        tagService.deleteTag(id);
-        return "redirect:/tag/firstPage";
-    }
-
-}
+    }*/

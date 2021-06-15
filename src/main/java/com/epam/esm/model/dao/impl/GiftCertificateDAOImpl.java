@@ -28,17 +28,17 @@ public class GiftCertificateDAOImpl implements GiftCertificateDAO {
                 new BeanPropertyRowMapper<>(GiftCertificate.class)).stream().findAny().orElse(null);
     }
 
-    public void addCertificate(GiftCertificate certificate) {
-        jdbcTemplate.update(SqlGiftCertificateQuery.ADD_CERTIFICATE, certificate.getDescription(), certificate.getPrice(),
+    public int addCertificate(GiftCertificate certificate) {
+        return jdbcTemplate.update(SqlGiftCertificateQuery.ADD_CERTIFICATE, certificate.getDescription(), certificate.getPrice(),
                 certificate.getDuration(), certificate.getCreateDate(), certificate.getLastUpdateDate(), certificate.getName());
     }
 
-    public void deleteCertificate(int idCertificate) {
-        jdbcTemplate.update(SqlGiftCertificateQuery.DELETE_CERTIFICATE, idCertificate);
+    public int deleteCertificate(int idCertificate) {
+        return jdbcTemplate.update(SqlGiftCertificateQuery.DELETE_CERTIFICATE, idCertificate);
     }
 
-    public void updateCertificate(GiftCertificate giftCertificate){
-        jdbcTemplate.update(SqlGiftCertificateQuery.UPDATE_CERTIFICATE,
+    public int updateCertificate(GiftCertificate giftCertificate){
+        return jdbcTemplate.update(SqlGiftCertificateQuery.UPDATE_CERTIFICATE,
                 giftCertificate.getDescription(), giftCertificate.getPrice(),
                 giftCertificate.getDuration(), giftCertificate.getCreateDate(),
                 giftCertificate.getLastUpdateDate(), giftCertificate.getName(), giftCertificate.getId());

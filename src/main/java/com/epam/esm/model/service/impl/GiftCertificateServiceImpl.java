@@ -6,6 +6,8 @@ import com.epam.esm.model.service.GiftCertificateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -18,20 +20,23 @@ public class GiftCertificateServiceImpl implements GiftCertificateService {
         this.giftCertificateDAO = giftCertificateDAO;
     }
 
-    public void addGiftCertificate(GiftCertificate giftCertificate){
-        giftCertificateDAO.addCertificate(giftCertificate);
+    public int addGiftCertificate(GiftCertificate giftCertificate){
+        giftCertificate.setCreateDate(LocalDateTime.now());
+        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        return giftCertificateDAO.addCertificate(giftCertificate);
     }
 
-    public void deleteGiftCertificate(int id){
-        giftCertificateDAO.deleteCertificate(id);
+    public int deleteGiftCertificate(int id){
+        return giftCertificateDAO.deleteCertificate(id);
     }
 
     public List<GiftCertificate> allGiftCertificate(String sort){
         return giftCertificateDAO.allCertificate(sort);
     }
 
-    public void updateGiftCertificate(GiftCertificate giftCertificate){
-        giftCertificateDAO.updateCertificate(giftCertificate);
+    public int updateGiftCertificate(GiftCertificate giftCertificate){
+        giftCertificate.setLastUpdateDate(LocalDateTime.now());
+        return giftCertificateDAO.updateCertificate(giftCertificate);
     }
 
     public GiftCertificate findGiftById(int id){

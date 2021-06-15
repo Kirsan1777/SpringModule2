@@ -5,18 +5,32 @@
     <title>Title</title>
 </head>
 <body>
+<div align="center">
+    <h1>Gifts list</h1>
+    <table border="1">
+        <th>Gift Name</th>
+        <th>Create Date</th>
+        <th>Duration</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Last Update Date</th>
+        <div th:each="gift : ${gifts}">
+            <tr>
+                <td ><a th:href="@{/certificate/{id}(id=${gift.getId()})}"
+                        th:text="${gift.getName()}"></a>
+                </td>
+                <td ><p th:text="${gift.getCreateDate()}"></td>
+                <td ><p th:text="${gift.getDuration()}"></td>
+                <td ><p th:text="${gift.getDescription()}"></td>
+                <td ><p th:text="${gift.getPrice()}"></td>
+                <td ><p th:text="${gift.getLastUpdateDate()}"></td>
 
-<div th:each="gift : ${gifts}">
-    <a th:href="@{/certificate/{id}(id=${gift.getId()})}"
-       th:text="${gift.getName()}"
-    ></a>
-
-    <p th:text="${gift.getDescription()}"></p>
-    <p th:text="${gift.getPrice()}"></p>
-    <p th:text="${gift.getCreateDate()}"></p>
+            </tr>
+        </div>
+    </table>
 </div>
 
-<form th:method="POST" th:action="@{/certificate}" th:object="${gift}">
+<form th:method="POST" th:action="@{/certificate/add}" th:object="${gift}">
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <br/>
@@ -26,15 +40,11 @@
     <label for="price">Enter price: </label>
     <input type="number" min="0" max="500" th:field="*{price}" id="price"/>
     <br/>
+    <label for="duration">Enter duration: </label>
+    <input type="number" min="0" max="500" th:field="*{duration}" id="duration"/>
+    <br/>
     <input type="submit" value="Create"/>
 </form>
-
-Concatenated table!
-<div th:each="table : ${tables}">
-    <p th:text="${table.getTagName()}"></p>
-    <p th:text="${table.getGiftName()}"></p>
-    <p th:text="${table.getCreateDate()}"></p>
-</div>
 
 </body>
 </html>

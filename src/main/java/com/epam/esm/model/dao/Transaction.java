@@ -3,13 +3,8 @@ package com.epam.esm.model.dao;
 import com.epam.esm.model.dao.impl.GiftCertificateDAOImpl;
 import com.epam.esm.model.dao.impl.LinkTableDAOImpl;
 import com.epam.esm.model.dao.impl.TagDAOImpl;
-import com.epam.esm.util.TagValidator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Component;
-
-import java.sql.Connection;
-import java.sql.SQLException;
 
 @Component
 public class Transaction {

@@ -1282,11 +1282,11 @@ SELECT|sys.sys_config
     </column>
     <column id="375" parent="299" name="create_date">
       <Position>5</Position>
-      <DataType>date|0s</DataType>
+      <DataType>datetime|0s</DataType>
     </column>
     <column id="376" parent="299" name="last_update_date">
       <Position>6</Position>
-      <DataType>date|0s</DataType>
+      <DataType>datetime|0s</DataType>
     </column>
     <column id="377" parent="299" name="name">
       <Position>7</Position>
@@ -1328,11 +1328,15 @@ SELECT|sys.sys_config
       <ColNames>id_tag</ColNames>
       <RefTableName>tag</RefTableName>
       <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="386" parent="300" name="many_to_many_gift_certificate_id_fk">
       <ColNames>id_certificate</ColNames>
       <RefTableName>gift_certificate</RefTableName>
       <RefColNames>id</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="387" parent="301" name="id">
       <Position>1</Position>

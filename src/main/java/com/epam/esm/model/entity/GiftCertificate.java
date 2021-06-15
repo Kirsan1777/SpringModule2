@@ -3,6 +3,7 @@ package com.epam.esm.model.entity;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Component
@@ -11,13 +12,24 @@ public class GiftCertificate {
     private String description;
     private double price;
     private int duration;
-    private String createDate; //Потом исправить на нормальный тип переменной
-    private String lastUpdateDate; // то же самое
+    private LocalDateTime createDate;
+    private LocalDateTime lastUpdateDate;
     private String name;
 
     public GiftCertificate(){
 
     }
+
+    public GiftCertificate(int id, String description, double price, int duration, LocalDateTime createDate, LocalDateTime lastUpdateDate, String name) {
+        this.id = id;
+        this.description = description;
+        this.price = price;
+        this.duration = duration;
+        this.createDate = createDate;
+        this.lastUpdateDate = lastUpdateDate;
+        this.name = name;
+    }
+
 
     public int getId() {
         return id;
@@ -51,19 +63,19 @@ public class GiftCertificate {
         this.duration = duration;
     }
 
-    public String getCreateDate() {
+    public LocalDateTime getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(LocalDateTime createDate) {
         this.createDate = createDate;
     }
 
-    public String getLastUpdateDate() {
+    public LocalDateTime getLastUpdateDate() {
         return lastUpdateDate;
     }
 
-    public void setLastUpdateDate(String lastUpdateDate) {
+    public void setLastUpdateDate(LocalDateTime lastUpdateDate) {
         this.lastUpdateDate = lastUpdateDate;
     }
 
