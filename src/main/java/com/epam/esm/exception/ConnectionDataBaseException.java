@@ -1,5 +1,8 @@
 package com.epam.esm.exception;
 
+/**
+ * Class of data base exception
+ */
 public class ConnectionDataBaseException extends Exception {
 
     public ConnectionDataBaseException() {

@@ -1,16 +1,17 @@
 package com.epam.esm.model.entity;
 
-import java.util.List;
 import java.util.Objects;
-
+/**
+ * The class of gift certificate with tag
+ */
 public class GiftTag {
     private String tagName;
     private String giftName;
     private double price;
     private int duration;
     private String description;
-    private String createDate; //use not String param
-    private String lastUpdateDate; // use not String param
+    private String createDate;
+    private String lastUpdateDate;
 
     public String getTagName() {
         return tagName;

@@ -6,14 +6,42 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 
 import java.util.List;
 
-    public interface TagDAO {
-        List<Tag> allTags(String sort);
+/**
+ * The interface tag DAO.
+ */
+public interface TagDAO {
+    /**
+     * Method for get all tags
+     *
+     * @param sort the param for sort table
+     */
+    List<Tag> allTags(String sort);
 
-        int addTag(String name);
+    /**
+     * Method for add tag
+     *
+     * @param name the tag name
+     */
+    int addTag(String name);
 
-        int deleteTag(int idTag);
+    /**
+     * Method for delete tag
+     *
+     * @param idTag the tag id
+     */
+    int deleteTag(int idTag);
 
-        Tag readOneTagByName(String name);
+    /**
+     * Method for get one tag by name
+     *
+     * @param name the tag name
+     */
+    Tag readOneTagByName(String name);
 
-        Tag readOneTagById(int id);
-    }
+    /**
+     * Method for get one tag by id
+     *
+     * @param id the tag id
+     */
+    Tag readOneTagById(int id);
+}

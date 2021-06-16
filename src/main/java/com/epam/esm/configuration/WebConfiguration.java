@@ -14,7 +14,7 @@ import java.util.EnumSet;
  * Class of initializer of web app
  */
 public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletInitializer {
-    // Our Web.xml using java code
+
     @Override
     protected Class<?>[] getRootConfigClasses() {
         return new Class[0];
@@ -22,12 +22,12 @@ public class WebConfiguration extends AbstractAnnotationConfigDispatcherServletI
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[] {SpringConfig.class}; // our config class
+        return new Class[] {SpringConfig.class};
     }
 
     @Override
     protected String[] getServletMappings() {
-        return new String[] {"/"}; // all http request
+        return new String[] {"/"};
     }
 
     @Override

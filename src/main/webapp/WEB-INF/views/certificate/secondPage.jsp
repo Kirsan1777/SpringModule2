@@ -32,7 +32,7 @@
 
 <form th:method="POST" th:action="@{/certificate/add}" th:object="${gift}">
     <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <input type="text" required th:field="*{name}" id="name"/>
     <br/>
     <label for="description">Enter description: </label>
     <input type="text" th:field="*{description}" id="description"/>

@@ -4,7 +4,9 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
+/**
+ * Class of data base connection pool properties
+ */
 public class DBCPBase{
 
     private static BasicDataSource ds = new BasicDataSource();

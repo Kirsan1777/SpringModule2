@@ -1,7 +1,9 @@
 package com.epam.esm.util;
 
 import com.epam.esm.model.entity.GiftCertificate;
-
+/**
+ * The class for gift certificate data validation
+ */
 public class GiftCertificateValidator {
     private static final String FORBIDDEN_CHARACTERS = "<>?@#&";
     private static final int MAX_NAME_LENGTH = 100;
