@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Class for realise interface GiftCertificateDAO
+ */
 @Component
 public class GiftCertificateDAOImpl implements GiftCertificateDAO {
     private final JdbcTemplate jdbcTemplate;
@@ -19,11 +22,11 @@ public class GiftCertificateDAOImpl implements GiftCertificateDAO {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public List<GiftCertificate> allCertificate(String sort){
+    public List<GiftCertificate> allCertificate(String sort) {
         return jdbcTemplate.query(SqlGiftCertificateQuery.SELECT_ALL_CERTIFICATE + sort, new BeanPropertyRowMapper<>(GiftCertificate.class));
     }
 
-    public GiftCertificate readOneGiftById(int id){
+    public GiftCertificate readOneGiftById(int id) {
         return jdbcTemplate.query(SqlGiftCertificateQuery.SELECT_CERTIFICATE_BY_ID, new Object[]{id},
                 new BeanPropertyRowMapper<>(GiftCertificate.class)).stream().findAny().orElse(null);
     }
@@ -37,7 +40,7 @@ public class GiftCertificateDAOImpl implements GiftCertificateDAO {
         return jdbcTemplate.update(SqlGiftCertificateQuery.DELETE_CERTIFICATE, idCertificate);
     }
 
-    public int updateCertificate(GiftCertificate giftCertificate){
+    public int updateCertificate(GiftCertificate giftCertificate) {
         return jdbcTemplate.update(SqlGiftCertificateQuery.UPDATE_CERTIFICATE,
                 giftCertificate.getDescription(), giftCertificate.getPrice(),
                 giftCertificate.getDuration(), giftCertificate.getCreateDate(),

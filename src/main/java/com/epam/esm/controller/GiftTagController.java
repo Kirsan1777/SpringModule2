@@ -6,6 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+
+/**
+ * Class of concatenated tables controller to handle requests and response
+ */
 @Controller
 @RequestMapping("many")
 public class GiftTagController {
@@ -84,27 +88,4 @@ public class GiftTagController {
         model.setViewName(THIRD_PAGE);
         return model;
     }
-
-
-    /*@GetMapping("/findByName")
-    public String sortByParam(@RequestParam("name") String name, Model model) {
-        model.addAttribute("tables", linkTableDAO.getConcatenatedTables
-                (" WHERE t.name LIKE '%" + name + "%'"));
-        return "many/thirdPage";
-    }
-
-    @GetMapping("/findByNameAndSort")
-    public String sortByParams(@RequestParam("order") String order,
-                               @RequestParam("type") String type, Model model) {
-        model.addAttribute("tables", linkTableDAO.getConcatenatedTables
-                (" ORDER BY " + order + " " + type));
-        return "many/thirdPage";
-    }
-
-    @GetMapping("/findByPartOfName")
-    public String sortByParamDescriptionAndName(@RequestParam("name") String name, @RequestParam("param") String param, Model model) {
-        model.addAttribute("tables", linkTableDAO.getConcatenatedTables
-                (" WHERE " + param + " LIKE '%" + name + "%'"));
-        return "many/thirdPage";
-    }*/
 }

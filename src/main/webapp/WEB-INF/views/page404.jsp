@@ -13,7 +13,9 @@
 </head>
 <body>
 <h1>Error 404!</h1>
-<p>Error message is <p th:text="${exception.getMessage()}">"</p>
+<p>Error code is "<%=response.getStatus() %>"</p>
+<p>Error message is "<%=exception.getMessage() %>"</p>
+<p>Error stack trace is "<%=exception.getStackTrace() %>"</p>
 <button class="btn btn-primary" onclick="history.back()">Back to previous page</button>
 </body>
 </html>

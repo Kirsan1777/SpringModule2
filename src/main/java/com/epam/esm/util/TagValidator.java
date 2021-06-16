@@ -4,7 +4,9 @@ import com.epam.esm.model.entity.Tag;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-
+/**
+ * The class for tag data validation
+ */
 @Component
 public class TagValidator {
     private static final String FORBIDDEN_CHARACTERS = "<>@#&";

@@ -1,13 +1,16 @@
 package com.epam.esm.model.service.impl;
 
-import com.epam.esm.model.dao.impl.GiftCertificateDAOImpl;
 import com.epam.esm.model.dao.impl.LinkTableDAOImpl;
 import com.epam.esm.model.dao.impl.TagDAOImpl;
+import com.epam.esm.model.service.GiftTagService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
-public class GiftTagServiceImpl {
+/**
+ * The class for realise interface GiftTagService
+ */
+@Service
+public class GiftTagServiceImpl implements GiftTagService {
     @Autowired
     private TagDAOImpl tagDAO;
 

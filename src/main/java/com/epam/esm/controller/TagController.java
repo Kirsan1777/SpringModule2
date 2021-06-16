@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-
+/**
+ * Class of tag controller to handle requests and response
+ */
 @Controller
 @RequestMapping("/tag")
 public class TagController {
@@ -68,10 +70,3 @@ public class TagController {
     }
 
 }
-
-    /*@GetMapping("/firstPage")
-    public String firstPage(Model model, @RequestParam(value = "sort", required = false) String sort){
-        model.addAttribute("tags", tagService.allTags(ASC));
-        model.addAttribute("tag", new Tag());
-        return "tag/firstPage";
-    }*/

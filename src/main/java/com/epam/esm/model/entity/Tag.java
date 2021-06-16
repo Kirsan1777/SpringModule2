@@ -1,12 +1,12 @@
 package com.epam.esm.model.entity;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
-
+/**
+ * The class of tag
+ */
 @Component
-//@Scope("prototype")
 public class Tag {
     private int id;
     private String name;

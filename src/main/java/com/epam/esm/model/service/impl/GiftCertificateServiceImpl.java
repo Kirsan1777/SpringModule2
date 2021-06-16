@@ -4,13 +4,15 @@ import com.epam.esm.model.dao.impl.GiftCertificateDAOImpl;
 import com.epam.esm.model.entity.GiftCertificate;
 import com.epam.esm.model.service.GiftCertificateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Component
+/**
+ * The class for realise interface GiftCertificateService
+ */
+@Service
 public class GiftCertificateServiceImpl implements GiftCertificateService {
 
     private final GiftCertificateDAOImpl giftCertificateDAO;

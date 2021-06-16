@@ -24,10 +24,9 @@ import javax.sql.DataSource;
 @ComponentScan(basePackages = "com.epam.esm")
 @EnableWebMvc
 public class SpringConfig implements WebMvcConfigurer {
-    //It means applicationContext = applicationContextMVC.xml
     private final ApplicationContext applicationContext;
 
-    @Autowired // implement by Spring auto
+    @Autowired
     public SpringConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
@@ -36,8 +35,8 @@ public class SpringConfig implements WebMvcConfigurer {
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
         templateResolver.setApplicationContext(applicationContext);
-        templateResolver.setPrefix("/WEB-INF/views/"); // folder of our views
-        templateResolver.setSuffix(".jsp"); // expansion
+        templateResolver.setPrefix("/WEB-INF/views/");
+        templateResolver.setSuffix(".jsp");
         return templateResolver;
     }
 

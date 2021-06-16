@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * Class for realise interface TagDAO
+ */
 @Component
 public class TagDAOImpl implements TagDAO {
 

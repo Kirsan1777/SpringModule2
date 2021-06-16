@@ -1,9 +1,7 @@
 package com.epam.esm.test.model.dao;
 
 import com.epam.esm.model.dao.impl.GiftCertificateDAOImpl;
-import com.epam.esm.model.dao.impl.TagDAOImpl;
 import com.epam.esm.model.entity.GiftCertificate;
-import com.epam.esm.model.entity.Tag;
 import org.junit.Assert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,17 +13,16 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import javax.sql.DataSource;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.List;
 
 public class GiftCertificateDAOTest {
 
     private GiftCertificateDAOImpl giftCertificateDAO;
 
-    private static final String SELECT = "SELECT * FROM gift_certificate";
     GiftCertificate giftCertificateUpdated = new GiftCertificate(10,"newTagUpdate",200,1,
             LocalDateTime.of(2017, Month.NOVEMBER, 30, 0,0),
             LocalDateTime.of(2017, Month.NOVEMBER, 30, 0,0),
             "newGift");
+    
     GiftCertificate giftCertificate = new GiftCertificate(1,"desc1",1,1,
             LocalDateTime.of(2021, Month.JUNE, 2, 0,0),
             LocalDateTime.of(2021, Month.JUNE, 2, 0,0),

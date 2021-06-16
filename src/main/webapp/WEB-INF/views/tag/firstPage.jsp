@@ -13,7 +13,7 @@
 
 <form th:method="POST" th:action="@{/tag}" th:object="${tag}">
     <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name"/>
+    <input type="text" required th:field="*{name}" id="name"/>
     <br/>
     <input type="submit" value="Create"/>
 </form>
