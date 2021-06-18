@@ -67,10 +67,3 @@ public class ControllerSpring {
     }
 
 }
-
-    /*@GetMapping("/firstPage")
-    public String firstPage(Model model, @RequestParam(value = "sort", required = false) String sort){
-        model.addAttribute("tags", tagService.allTags(ASC));
-        model.addAttribute("tag", new Tag());
-        return "tag/firstPage";
-    }*/
