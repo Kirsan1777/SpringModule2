@@ -1,1 +1,0 @@
-DROP TABLE many_to_many;
